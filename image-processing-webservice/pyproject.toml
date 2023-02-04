@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "image-processing-webservice"
+version = "0.1.0"
+description = "Backend for plugin-driven image processing"
+authors = ["Julian Arz <j.arz@web.de>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "image_processing_webservice"}]
+
+[tool.poetry.dependencies]
+python = ">=3.8, <=3.10"
+wasmer = "^1.1.0"
+wasmer-compiler-cranelift = "^1.1.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
