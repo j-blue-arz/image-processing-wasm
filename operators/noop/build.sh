@@ -1,0 +1,1 @@
+tinygo build -o ../noop.wasm -target wasi .

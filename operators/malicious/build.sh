@@ -1,0 +1,1 @@
+tinygo build -o ../malicious.wasm -target wasi .

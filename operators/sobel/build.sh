@@ -1,1 +1,1 @@
-tinygo build -o sobel.wasm -target wasi .
+tinygo build -o ../sobel.wasm -target wasi .
