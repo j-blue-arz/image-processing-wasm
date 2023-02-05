@@ -5,7 +5,6 @@ description = "Backend for plugin-driven image processing"
 authors = ["Julian Arz <j.arz@web.de>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "image_processing_webservice"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8, <=3.10"
