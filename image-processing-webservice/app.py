@@ -22,7 +22,7 @@ buffer_pointer = instance.exports.getInputBuffer(len(image_bytes))
 buffer = instance.exports.memory.uint8_view(offset=buffer_pointer)
 buffer[:len(image_bytes)] = image_bytes
 
-buffer_pointer = instance.exports.applySobelOperator()
+buffer_pointer = instance.exports.applyImageOperator()
 if buffer_pointer != 0:
     size = instance.exports.getOutputBufferSize(buffer_pointer)
     buffer = instance.exports.memory.uint8_view(offset=buffer_pointer)

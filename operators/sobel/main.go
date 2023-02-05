@@ -10,8 +10,8 @@ import (
 var inputBuffer []byte
 var outputBuffer []byte
 
-//go:export applySobelOperator
-func applySobelOperator() uintptr {
+//go:export applyImageOperator
+func applyImageOperator() uintptr {
 	img, err := jpeg.Decode(bytes.NewReader(inputBuffer))
 	if err != nil {
 		println(err.Error())
