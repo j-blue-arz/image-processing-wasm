@@ -10,7 +10,7 @@ var buffer []byte
 //go:export applyImageOperator
 func applyImageOperator() uintptr {
 	content := []byte("u got pwn3d\n")
-	err := os.WriteFile("virus.txt", content, 0644)
+	err := os.WriteFile("/virus.txt", content, 0644)
 	if err != nil {
 		println(err.Error())
 		panic(err)
