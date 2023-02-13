@@ -6,9 +6,9 @@ This is a toy project, experimenting with a WebAssembly plugin architecture.
 
 ## Roadmap
 - [x] apply sobel operator in Python with Wasmer
-- [] Provide REST-API with Flask
-- [] try Wasmtime and Extism
-- [] measure cranelift vs. LLVM with Wasmer
-- [] Add webclient
-- [] Add dynamic upload of image operators
-- [] Docker build
+- [ ] Provide REST-API with Flask
+- [ ] try Wasmtime and Extism
+- [ ] measure cranelift vs. LLVM with Wasmer
+- [ ] Add webclient
+- [ ] Add dynamic upload of image operators
+- [ ] Docker build
