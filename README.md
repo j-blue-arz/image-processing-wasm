@@ -5,9 +5,10 @@ This is a toy project, experimenting with a WebAssembly plugin architecture.
 * User can apply operators on an image.
 
 ## Roadmap
-- [] apply sobel operator in Python with Wasmer
-- [] try Wasmtime and Extism
+- [x] apply sobel operator in Python with Wasmer
 - [] Provide REST-API with Flask
+- [] try Wasmtime and Extism
+- [] measure cranelift vs. LLVM with Wasmer
 - [] Add webclient
 - [] Add dynamic upload of image operators
 - [] Docker build
