@@ -10,6 +10,7 @@ readme = "README.md"
 python = ">=3.8, <=3.10"
 wasmer = "^1.1.0"
 wasmer-compiler-cranelift = "^1.1.0"
+flask = "^2.2.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
