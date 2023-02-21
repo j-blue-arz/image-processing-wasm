@@ -14,6 +14,7 @@ flask = "^2.2.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
+psutil = "^5.9.4"
 
 [build-system]
 requires = ["poetry-core"]

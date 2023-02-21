@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from werkzeug.middleware.profiler import ProfilerMiddleware
 
 
 def create_app():
@@ -12,8 +13,15 @@ def create_app():
     )
     app.config.from_mapping(
         SECRET_KEY="dev",
-        DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
+        PROFILE=False,
     )
+    app.config.from_prefixed_env(prefix="APP")
+
+    if app.config["PROFILE"]:
+        app.wsgi_app = ProfilerMiddleware(app.wsgi_app, profile_dir=os.path.join(app.instance_path),
+                                          stream=None)
+    
+    
 
     # ensure the instance folder exists
     try:
