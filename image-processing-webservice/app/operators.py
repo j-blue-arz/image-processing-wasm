@@ -33,7 +33,7 @@ def _fetch_image(instance, buffer_pointer):
         print("aborting")
 
 def apply_operator(image_bytes):
-    wasm_file = "../../operators/sobel.wasm"
+    wasm_file = "../operators/sobel.wasm"
     instance = _create_instance(wasm_file)
     _read_image(instance, image_bytes)
     buffer_pointer = instance.exports.applyImageOperator()

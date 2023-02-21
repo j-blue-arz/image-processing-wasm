@@ -31,13 +31,18 @@
             flex-flow: row wrap;
             gap: 10px;
         }
+
+        #filePicker {
+            display: none;
+        }
     </style>
-    <script src="wasm_exec.js"></script>
 </head>
 
 <body>
     <div class="content">
         <div class="buttons">
+            <input type="file" id="filePicker" accept="image/png, image/jpeg" />
+            <input type="button" value="Browse..." onclick="document.getElementById('filePicker').click();" />
             <input type="button" id="compute" value="apply sobel" />
         </div>
         <div class="output">
@@ -46,6 +51,7 @@
         </div>
     </div>
     <script>
+        const filePicker = document.getElementById("filePicker");
         const sourceImage = document.getElementById("sourceImage");
         const targetImage = document.getElementById("targetImage");
         const computeButton = document.getElementById("compute");
@@ -55,8 +61,38 @@
 
         computeButton.onclick = () => compute();
 
+        filePicker.addEventListener("change", handleFileChange, false);
+
+        async function handleFileChange() {
+            if (this.files.length) {
+                const file = this.files[0];
+                sourceImage.src = URL.createObjectURL(file);
+                input = blob;
+
+                compute();
+            }
+        }
+
         function compute() {
-            
+            const formData = new FormData();
+            formData.append("image", input);
+            fetch("api/process-image", {
+                method: "POST",
+                headers: {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                    }
+                },
+                body: formData
+            }).then(res => {
+                return res.blob()
+            }).then(blob => {
+                const img = URL.createObjectURL(blob);
+                targetImage.setAttribute('src', img);
+            }).catch(error => {
+                console.error(error);
+            });
         }
 
         function initializeImage() {
@@ -68,8 +104,7 @@
                 const blob = req.response;
                 if (blob) {
                     sourceImage.src = URL.createObjectURL(blob);
-                    const arrayBuffer = await blob.arrayBuffer();
-                    input = new Uint8Array(arrayBuffer);
+                    input = blob;
                 }
             };
 
