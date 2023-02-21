@@ -23,11 +23,19 @@ def process_image():
     image_bytes = operators.apply_operator(imagefile.read())
     response = make_response(image_bytes)
     response.headers.set("Content-Type", "image/png")
+    gc.collect()
     return response
 
-@API.route('/memory')
-def print_memory():
-    return {'memory': process.memory_info().rss}
+@API.route("/pstats")
+def pstats():
+    process = psutil.Process(os.getpid())
+    return {
+        "rss": f"{process.memory_info().rss / 1024 ** 2:.2f} MiB",
+        "vms": f"{process.memory_info().vms / 1024 ** 2:.2f} MiB",
+        "shared": f"{process.memory_info().shared / 1024 ** 2:.2f} MiB",
+        "open file descriptors": process.num_fds(),
+        "threads": process.num_threads(),
+    }
 
 
 @API.route("/snapshot")
