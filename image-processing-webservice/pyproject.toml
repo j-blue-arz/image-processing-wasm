@@ -12,6 +12,7 @@ wasmer = "^1.1.0"
 wasmer-compiler-cranelift = "^1.1.0"
 flask = "^2.2.2"
 wasmtime = "^6.0.0"
+extism = "^0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
