@@ -3,6 +3,7 @@ from . import operators
 
 import gc
 import os
+import time
 import tracemalloc
 import psutil
 
@@ -12,6 +13,8 @@ process = psutil.Process(os.getpid())
 tracemalloc.start()
 s = None
 
+timings = []
+
 @API.route("/info", methods=["GET"])
 def version():
     return {"version": "0.1.0"}
@@ -19,10 +22,13 @@ def version():
 
 @API.route("/process-image", methods=["POST"])
 def process_image():
+    start = time.time()
     imagefile = request.files["image"]
     image_bytes = operators.apply_operator(imagefile.read())
     response = make_response(image_bytes)
     response.headers.set("Content-Type", "image/png")
+    diff = time.time() - start
+    timings.append(diff)
     gc.collect()
     return response
 
@@ -52,3 +58,7 @@ def snap():
             lines.append(str(stat))
         s = j
         return "\n".join(lines)
+
+@API.route("/timings")
+def get_timings():
+    return {"timings": timings}
