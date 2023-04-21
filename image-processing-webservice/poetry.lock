@@ -467,18 +467,18 @@ files = [
 
 [[package]]
 name = "wasmtime"
-version = "6.0.0"
+version = "8.0.0"
 description = "A WebAssembly runtime powered by Wasmtime"
 category = "main"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "wasmtime-6.0.0-py3-none-any.whl", hash = "sha256:4b9ccb4c29a6c03729b8eb376de2c7e7e27a92ed5b6f84c2b1a37379eeeeb255"},
-    {file = "wasmtime-6.0.0-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:dfb974d82f09f8b9f4993a9c3256c42b40d9f223128f54da7d9a07043645ed35"},
-    {file = "wasmtime-6.0.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:df1e6f735642490de585701c1030dc4e9cc4d853628370183fa3d91e9b5d816c"},
-    {file = "wasmtime-6.0.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:5a457ae39c77521aced2a9d66148a38583965ded101cd97803a2f0aa86139b9e"},
-    {file = "wasmtime-6.0.0-py3-none-manylinux2014_aarch64.whl", hash = "sha256:694420c5049d1bdd767daa7969eb73d1dd70a778f2d831d13c4aa14fe63beeef"},
-    {file = "wasmtime-6.0.0-py3-none-win_amd64.whl", hash = "sha256:fe77820fecc6f12da97be35d2a3bf0be8e47904e8b7e75e0e07b156a79eadba0"},
+    {file = "wasmtime-8.0.0-py3-none-any.whl", hash = "sha256:1ef7cd5dc8bef0fd77dfa1ce3f0130289917ce4785efe035407722a7ebca3fcb"},
+    {file = "wasmtime-8.0.0-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:b30d6b66aa15a1e6c76974a1df475300948d1ca334bdd328cb222d8ff9b8ef3e"},
+    {file = "wasmtime-8.0.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:a619e969816bf6ff42c90339cdd970009b4cb0bc586f8dfe0543ce09f69a8ed8"},
+    {file = "wasmtime-8.0.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:ec7d7565310bb8ed5707fa29dab6fc6d8b8bf5ec1bc6630e43293714f46689a1"},
+    {file = "wasmtime-8.0.0-py3-none-manylinux2014_aarch64.whl", hash = "sha256:9f06f6978be32f2409be273010079d6e80d704876c00ee531bc87b7d1b412105"},
+    {file = "wasmtime-8.0.0-py3-none-win_amd64.whl", hash = "sha256:6298226db33d1e7041111703bad97289c2e5600c5fffdc853239a3692d3a26e0"},
 ]
 
 [package.extras]
@@ -521,4 +521,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8, <=3.10"
-content-hash = "b6831d59b8be6357dcbc3e0a206f27eda8515e90e63866a6acdedfefc175b46e"
+content-hash = "be47579069a26b8b55547b081b7d80b8f3680d74277ac87025483adde82689ea"
