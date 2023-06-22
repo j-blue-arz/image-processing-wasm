@@ -13,15 +13,20 @@ class WasmerRuntime:
         self._instance = Instance(module, import_object)
         self._buffer_pointer = 0
     
-    def read_image_into_memory(self, image_bytes):
+    def apply_operator(self, image_bytes):
+        self._read_image_into_memory(image_bytes)
+        self._apply_operator_on_image()
+        return self._retrieve_image()
+    
+    def _read_image_into_memory(self, image_bytes):
         buffer_pointer = self._instance.exports.getInputBuffer(len(image_bytes))
         buffer = self._instance.exports.memory.uint8_view(offset=buffer_pointer)
         buffer[:len(image_bytes)] = image_bytes
     
-    def apply_operator(self):
+    def _apply_operator_on_image(self):
         self._buffer_pointer = self._instance.exports.applyImageOperator()
     
-    def retrieve_image(self):
+    def _retrieve_image(self):
         if self._buffer_pointer != 0:
             size = self._instance.exports.getOutputBufferSize(self._buffer_pointer)
             buffer = self._instance.exports.memory.uint8_view(offset=self._buffer_pointer)

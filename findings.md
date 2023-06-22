@@ -3,3 +3,7 @@ There is a memory leak somewhere. Between requests, about 200MB of memory is lea
 seems to be in line
 
 `module = Module(store, wasm_bytes)`
+
+Wasmtime takes about 1.1s for sobel on skyscraper image
+Extism is slower, takes about 2s for same image.
+Wasmtime is low level, Extism has convenient I/O API for handle byte arrays.

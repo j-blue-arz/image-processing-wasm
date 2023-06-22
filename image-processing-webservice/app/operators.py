@@ -1,9 +1,8 @@
 from .runtimes.wasmer import WasmerRuntime
 from .runtimes.wasmtime import WasmtimeRuntime
+from .runtimes.extism import ExtismRuntime
 
 def apply_operator(image_bytes):
     wasm_file = "../operators/sobel.wasm"
     instance = WasmtimeRuntime(wasm_file)
-    instance.read_image_into_memory(image_bytes)
-    instance.apply_operator()
-    return instance.retrieve_image()
+    return instance.apply_operator(image_bytes)
