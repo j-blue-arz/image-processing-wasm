@@ -10,5 +10,7 @@ This is a toy project, experimenting with a WebAssembly plugin architecture.
 - [ ] Investigate memory leak -> Could not solve it.
 - [X] try Wasmtime and Extism
 - [X] Add webclient
+- [ ] Add selector for runtime
+- [ ] Add selector for image operators
 - [ ] Add dynamic upload of image operators
 - [ ] Docker build

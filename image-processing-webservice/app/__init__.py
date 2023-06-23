@@ -32,6 +32,8 @@ def create_app():
     from . import image_service
 
     app.register_blueprint(image_service.API)
+    from . import info_service
+    app.register_blueprint(info_service.API)
 
     @app.route('/')
     def index():
