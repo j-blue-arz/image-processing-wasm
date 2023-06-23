@@ -14,6 +14,7 @@ def create_app():
     app.config.from_mapping(
         SECRET_KEY="dev",
         PROFILE=False,
+        OPERATORS_PATH=os.path.join(app.instance_path, "operators")
     )
     app.config.from_prefixed_env(prefix="APP")
 
@@ -30,8 +31,11 @@ def create_app():
         pass
 
     from . import image_service
-
     app.register_blueprint(image_service.API)
+
+    from . import operator_service
+    app.register_blueprint(operator_service.API)
+
     from . import info_service
     app.register_blueprint(info_service.API)
 

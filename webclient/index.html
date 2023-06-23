@@ -44,6 +44,7 @@
             <input type="file" id="filePicker" accept="image/png, image/jpeg" />
             <input type="button" value="Browse..." onclick="document.getElementById('filePicker').click();" />
             <input type="button" id="compute" value="apply sobel" />
+            <select name="operator" id="operators"></select>
         </div>
         <div class="output">
             <img id="sourceImage" />
@@ -55,9 +56,11 @@
         const sourceImage = document.getElementById("sourceImage");
         const targetImage = document.getElementById("targetImage");
         const computeButton = document.getElementById("compute");
+        const operatorsSelection = document.getElementById("operators");
         let input = null;
 
         initializeImage()
+        initializeOperators()
 
         computeButton.onclick = () => compute();
 
@@ -76,6 +79,9 @@
         function compute() {
             const formData = new FormData();
             formData.append("image", input);
+            const operatorOption = operatorsSelection.options[operatorsSelection.selectedIndex];
+            formData.append("operator_name", operatorOption.dataset.name)
+            formData.append("operator_runtime", operatorOption.dataset.runtime)
             fetch("api/process-image", {
                 method: "POST",
                 headers: {
@@ -109,6 +115,22 @@
             };
 
             req.send(null);
+        }
+
+        function initializeOperators() {
+            fetch("api/operators")
+            .then(operators => operators.json())
+            .then(operators => {
+                for(const operator of operators) {
+                    const displayName = operator.name + " (" + operator.runtime + ")"
+                    let option = new Option(displayName)
+                    option.setAttribute("data-name", operator.name);
+                    option.setAttribute("data-runtime", operator.runtime);
+                    operatorsSelection.options[operatorsSelection.options.length] = option;
+                }
+            }).catch(error => {
+                console.error(error);
+            });
         }
     </script>
 </body>

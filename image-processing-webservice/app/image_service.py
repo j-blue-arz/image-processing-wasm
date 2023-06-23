@@ -18,7 +18,7 @@ timings = []
 def process_image():
     start = time.time()
     imagefile = request.files["image"]
-    image_bytes = operators.apply_operator(imagefile.read())
+    image_bytes = operators.apply_operator(imagefile.read(), request.form["operator_name"], request.form["operator_runtime"])
     response = make_response(image_bytes)
     response.headers.set("Content-Type", "image/png")
     diff = time.time() - start
