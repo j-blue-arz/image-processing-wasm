@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"image/jpeg"
-	"image/png"
 	"unsafe"
 )
 
@@ -19,7 +18,7 @@ func applyImageOperator() uintptr {
 	}
 	resultImage := sobel(img)
 	var byteBuffer bytes.Buffer
-	png.Encode(&byteBuffer, resultImage)
+	jpeg.Encode(&byteBuffer, resultImage, nil)
 	outputBuffer = byteBuffer.Bytes()
 
 	return arrayToPtr(outputBuffer)

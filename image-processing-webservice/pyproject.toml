@@ -4,15 +4,14 @@ version = "0.1.0"
 description = "Backend for plugin-driven image processing"
 authors = ["Julian Arz <j.arz@web.de>"]
 license = "MIT"
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.8, <=3.10"
 wasmer = "^1.1.0"
 wasmer-compiler-cranelift = "^1.1.0"
 flask = "^2.2.2"
-wasmtime = "8.0.0"
-extism = "^0.2.0"
+wasmtime = "^14.0.0"
+extism = "^0.5.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"

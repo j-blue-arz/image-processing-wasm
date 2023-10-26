@@ -17,7 +17,7 @@ func applyImageOperator() int32 {
 	}
 	resultImage := sobel(img)
 	var byteBuffer bytes.Buffer
-	png.Encode(&byteBuffer, resultImage)
+	jpeg.Encode(&byteBuffer, resultImage, nil)
 	mem := pdk.AllocateBytes(byteBuffer.Bytes())
 
 	pdk.OutputMemory(mem)
